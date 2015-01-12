@@ -1,0 +1,21 @@
+th {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+td {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#main-heading {
+    font-family: Copperplate;
+    text-align: center;
+}
+
+#spacer {
+    padding-top: 25;
+    padding-bottom: 25px;
+}
