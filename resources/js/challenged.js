@@ -33,9 +33,9 @@ function updateChallenges() {
                             document.getElementById("nick"),
                             document.getElementById("spencer"),
                             document.getElementById("trevor")];
-    
+    // Time stuff.
     var oneDay = 86400000; // hours*minutes*seconds*milliseconds = milliseconds per day
-    var startOfChalleges = new Date("January 12, 2015 00:00:00");
+    var startOfChalleges = new Date("January 11, 2015 19:00:00");
     var today = new Date();
     
     var diffDays = Math.floor((today.getTime() - startOfChalleges.getTime()) / (oneDay));
