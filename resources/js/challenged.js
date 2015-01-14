@@ -1,5 +1,5 @@
 // Variable Declarations
-var challenges = ["Tell a joke to someone you don’t know", "Introduce yourself to someone you haven’t met", "Learn a new recipe, and cook yourself that", "3 hours of homework before relaxing", "Contact an organization you would like to be involved with", "Call that friend", "Draw/write for an hour", "Read for pleasure for an hour - physical book", "Organize an activity for your friends", "Mail a letter to someone you care about", "Do not swear today", "Visit a new location in Ann Arbor", "Ask a girl on a date", "Overtly flirt - has to be stranger", "Don’t look away", "1 Day without phone", "No phone in conversation", "Wake up at 7AM - if Friday/Saturday, set alarm for nearest weekday", "Day for yourself, no time with others", "Lay down on the ground in a well trafficked area longest time", "Enter into a conversation regarding a conflict you’ve been avoiding in an attempt to resolve it", "Spend $10 on someone else", "Don’t sleep in your house", "30 minutes of meditation", "50 Flyers", "Go for a run today", "Organize a meal with a friend", "Don’t complain today", "Apply for job", "Sell/donate something", "Audio commentary", "Dress Gud (attempt to contact a celebrity - Trevor)"];
+var challenges = ["Tell a joke to someone you don’t know", "Introduce yourself to someone you haven’t met", "Learn a new recipe, and cook yourself that", "3 hours of homework before relaxing", "Contact an organization you would like to be involved with", "Call that friend", "Draw/write for an hour", "Read for pleasure for an hour - physical book", "Organize an activity for your friends", "Mail a letter to someone you care about", "Do not swear today - write on hand", "Visit a new location in Ann Arbor", "Ask a girl on a date", "Overtly flirt - has to be stranger", "Don’t look away", "1 Day without phone", "No phone in conversation", "Wake up at 7AM - if Friday/Saturday, set alarm for nearest weekday", "Day for yourself, no time with others", "Lay down on the ground in a well trafficked area longest time", "Enter into a conversation regarding a conflict you’ve been avoiding in an attempt to resolve it", "Spend $10 on someone else", "Don’t sleep in your house", "30 minutes of meditation", "50 Flyers", "Go for a run today", "Organize a meal with a friend", "Don’t complain today - write on hand", "Apply for job", "Sell/donate something", "Audio commentary", "Dress Gud (attempt to contact a celebrity - Trevor)"];
 
 /*
 Anthony: overtly flirt. Zeitler: day for yourself. Lancendorfer: don't complain. Spencer: organize lunch with friend. Trevor: call that friend
@@ -47,6 +47,20 @@ function updateChallenges() {
         // I select the individual days by 
         currentChallengerElement.innerHTML = challenges[playerChallengeOrder[playerID][diffDays]];
     };
+    
+    var pastChallengerElements = [document.getElementById("alexChojPast"),
+                            document.getElementById("alexZeitPast"),
+                            document.getElementById("anthonyPast"),
+                            document.getElementById("nickPast"),
+                            document.getElementById("spencerPast"),
+                            document.getElementById("trevorPast")];
+    
+    // Get past Elements
+    for (var playerID = 0; playerID < pastChallengerElements.length; playerID++) {
+        var currentChallengerElement = pastChallengerElements[playerID];
+        currentChallengerElement.innerHTML = "<em>" + challenges[playerChallengeOrder[playerID][diffDays - 1]] + "</em>";
+    };
+    
 }
 
 updateChallenges();
