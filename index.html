@@ -27,46 +27,61 @@
             </h1>
         </div>
     </div>
-
-    <div id="spacer"></div>
-    <div class="container">
+    <div class="container" id="links">
         <div class="row">
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Alex Chojnacki</h4>
-              <p class="challenge" id="alexChoj">This is a current Challenge</p>
-              <p class="past-challenge" id="alexChojPast">This is yesterday's challenge</p>
-          </div>
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Alex Zeitler</h4>
-              <p class="challenge" id="alexZeit">This is a current Challenge</p>
-              <p class="past-challenge" id="alexZeitPast">This is yesterday's challenge</p>
-          </div>
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Anthony Fulton</h4>
-              <p class="challenge" id="anthony">This is a current Challenge</p>
-              <p class="past-challenge" id="anthonyPast">This is yesterday's challenge</p>
-          </div>
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Nick Lancendorfer</h4>
-              <p class="challenge" id="nick">This is a current Challenge</p>
-              <p class="past-challenge" id="nickPast">This is yesterday's challenge</p>
-          </div>
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Spencer Maroukis</h4>
-              <p class="challenge" id="spencer">This is a current Challenge</p>
-              <p class="past-challenge" id="spencerPast">This is yesterday's challenge</p>
-          </div>
-          <div class="col-sm-2 challenge-tile">
-              <h4 class="name">Trevor Torres</h4>
-              <p class="challenge" id="trevor">This is a current Challenge</p>
-              <p class="past-challenge" id="trevorPast">This is yesterday's challenge</p>
-          </div>
-          
+            <div class="col-md-4 col-md-offset-4">
+                <button class="btn" type="button" data-toggle="collapse" data-target="#about-content" aria-expanded="false" aria-controls="about-content">
+                    About
+                </button>
+                <div class="collapse" id="about-content">
+                    <div class="well">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, facere in officiis culpa, mollitia voluptates nesciunt quos reiciendis,
+                        excepturi cupiditate molestias quam deleniti illum architecto consectetur. Tempore nesciunt, vitae facilis!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="challenge-tile-container">
+        <div class="row">
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Alex Chojnacki</h4>
+                <p class="challenge" id="alexChoj">This is a current Challenge</p>
+                <p class="past-challenge" id="alexChojPast">This is yesterday's challenge</p>
+            </div>
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Alex Zeitler</h4>
+                <p class="challenge" id="alexZeit">This is a current Challenge</p>
+                <p class="past-challenge" id="alexZeitPast">This is yesterday's challenge</p>
+            </div>
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Anthony Fulton</h4>
+                <p class="challenge" id="anthony">This is a current Challenge</p>
+                <p class="past-challenge" id="anthonyPast">This is yesterday's challenge</p>
+            </div>
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Nick Lancendorfer</h4>
+                <p class="challenge" id="nick">This is a current Challenge</p>
+                <p class="past-challenge" id="nickPast">This is yesterday's challenge</p>
+            </div>
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Spencer Maroukis</h4>
+                <p class="challenge" id="spencer">This is a current Challenge</p>
+                <p class="past-challenge" id="spencerPast">This is yesterday's challenge</p>
+            </div>
+            <div class="col-sm-2 challenge-tile">
+                <h4 class="name">Trevor Torres</h4>
+                <p class="challenge" id="trevor">This is a current Challenge</p>
+                <p class="past-challenge" id="trevorPast">This is yesterday's challenge</p>
+            </div>
+
         </div>
     </div>
 
 
     <script src="resources/js/challenged.js"></script>
+    <script src="resources/js/material_design.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
