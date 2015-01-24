@@ -19,7 +19,7 @@
 </head>
 
 <body>
-   <div id="spacer"></div>
+    <div id="spacer"></div>
     <div class="container">
         <div class="row col-lg-12">
             <h1 id="main-heading">
@@ -27,61 +27,45 @@
             </h1>
         </div>
     </div>
-    
-    <div id="spacer"></div>
 
-   <div class="container-fluid">
-       <table style="margin-left: auto; margin-right: auto">
-        <th>Alex Chojnacki</th>
-        <th>Alex Zeitler</th>
-        <th>Anthony Fulton</th>
-        <th>Nick Lancendorfer</th>
-        <th>Spencer Maroukis</th>
-        <th>Trevor Torres</th>
-        <tr>
-            <td>
-                <span class="challenge" id="alexChoj">This text should be replaced</span>
-            </td>
-            <td>
-                <span class="challenge" id="alexZeit">This text should be replaced</span>
-            </td>
-            <td>
-                <span class="challenge" id="anthony">This text should be replaced</span>
-            </td>
-            <td>
-                <span class="challenge" id="nick">This text should be replaced</span>
-            </td>
-            <td>
-                <span class="challenge" id="spencer">This text should be replaced</span>
-            </td>
-            <td>
-                <span class="challenge" id="trevor">This text should be replaced</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="past-challenge" id="alexChojPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            <td class="past-challenge" id="alexZeitPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            <td class="past-challenge" id="anthonyPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            <td class="past-challenge" id="nickPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            <td class="past-challenge" id="spencerPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            <td class="past-challenge" id="trevorPast">
-                TODO: Add past challenges that dynamicaly update.
-            </td>
-            
-        </tr>
-    </table>
-   </div>
-    
+    <div id="spacer"></div>
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Alex Chojnacki</h4>
+              <p class="challenge" id="alexChoj">This is a current Challenge</p>
+              <p class="past-challenge" id="alexChojPast">This is yesterday's challenge</p>
+          </div>
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Alex Zeitler</h4>
+              <p class="challenge" id="alexZeit">This is a current Challenge</p>
+              <p class="past-challenge" id="alexZeitPast">This is yesterday's challenge</p>
+          </div>
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Anthony Fulton</h4>
+              <p class="challenge" id="anthony">This is a current Challenge</p>
+              <p class="past-challenge" id="anthonyPast">This is yesterday's challenge</p>
+          </div>
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Nick Lancendorfer</h4>
+              <p class="challenge" id="nick">This is a current Challenge</p>
+              <p class="past-challenge" id="nickPast">This is yesterday's challenge</p>
+          </div>
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Spencer Maroukis</h4>
+              <p class="challenge" id="spencer">This is a current Challenge</p>
+              <p class="past-challenge" id="spencerPast">This is yesterday's challenge</p>
+          </div>
+          <div class="col-sm-2 challenge-tile">
+              <h4 class="name">Trevor Torres</h4>
+              <p class="challenge" id="trevor">This is a current Challenge</p>
+              <p class="past-challenge" id="trevorPast">This is yesterday's challenge</p>
+          </div>
+          
+        </div>
+    </div>
+
+
     <script src="resources/js/challenged.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

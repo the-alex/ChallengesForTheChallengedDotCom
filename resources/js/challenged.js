@@ -1,3 +1,80 @@
+var getElementsByClassName = function (className, tag, elm){
+	if (document.getElementsByClassName) {
+		getElementsByClassName = function (className, tag, elm) {
+			elm = elm || document;
+			var elements = elm.getElementsByClassName(className),
+				nodeName = (tag)? new RegExp("\\b" + tag + "\\b", "i") : null,
+				returnElements = [],
+				current;
+			for(var i=0, il=elements.length; i<il; i+=1){
+				current = elements[i];
+				if(!nodeName || nodeName.test(current.nodeName)) {
+					returnElements.push(current);
+				}
+			}
+			return returnElements;
+		};
+	}
+	else if (document.evaluate) {
+		getElementsByClassName = function (className, tag, elm) {
+			tag = tag || "*";
+			elm = elm || document;
+			var classes = className.split(" "),
+				classesToCheck = "",
+				xhtmlNamespace = "http://www.w3.org/1999/xhtml",
+				namespaceResolver = (document.documentElement.namespaceURI === xhtmlNamespace)? xhtmlNamespace : null,
+				returnElements = [],
+				elements,
+				node;
+			for(var j=0, jl=classes.length; j<jl; j+=1){
+				classesToCheck += "[contains(concat(' ', @class, ' '), ' " + classes[j] + " ')]";
+			}
+			try	{
+				elements = document.evaluate(".//" + tag + classesToCheck, elm, namespaceResolver, 0, null);
+			}
+			catch (e) {
+				elements = document.evaluate(".//" + tag + classesToCheck, elm, null, 0, null);
+			}
+			while ((node = elements.iterateNext())) {
+				returnElements.push(node);
+			}
+			return returnElements;
+		};
+	}
+	else {
+		getElementsByClassName = function (className, tag, elm) {
+			tag = tag || "*";
+			elm = elm || document;
+			var classes = className.split(" "),
+				classesToCheck = [],
+				elements = (tag === "*" && elm.all)? elm.all : elm.getElementsByTagName(tag),
+				current,
+				returnElements = [],
+				match;
+			for(var k=0, kl=classes.length; k<kl; k+=1){
+				classesToCheck.push(new RegExp("(^|\\s)" + classes[k] + "(\\s|$)"));
+			}
+			for(var l=0, ll=elements.length; l<ll; l+=1){
+				current = elements[l];
+				match = false;
+				for(var m=0, ml=classesToCheck.length; m<ml; m+=1){
+					match = classesToCheck[m].test(current.className);
+					if (!match) {
+						break;
+					}
+				}
+				if (match) {
+					returnElements.push(current);
+				}
+			}
+			return returnElements;
+		};
+	}
+	return getElementsByClassName(className, tag, elm);
+};
+
+
+
 // Variable Declarations
 var challenges = ["Tell a joke to someone you don’t know", "Introduce yourself to someone you haven’t met", "Learn a new recipe, and cook yourself that", "3 hours of homework before relaxing", "Contact an organization you would like to be involved with", "Call that friend", "Draw/write for an hour", "Read for pleasure for an hour - physical book", "Organize an activity for your friends", "Mail a letter to someone you care about", "Do not swear today - write on hand", "Visit a new location in Ann Arbor", "Ask a girl on a date", "Overtly flirt - has to be stranger", "Don’t look away", "1 Day without phone", "No phone in conversation", "Wake up at 7AM - if Friday/Saturday, set alarm for nearest weekday", "Day for yourself, no time with others", "Lay down on the ground in a well trafficked area longest time", "Enter into a conversation regarding a conflict you’ve been avoiding in an attempt to resolve it", "Spend $10 on someone else", "Don’t sleep in your house", "30 minutes of meditation", "50 Flyers", "Go for a run today", "Organize a meal with a friend", "Don’t complain today - write on hand", "Apply for job", "Sell/donate something", "Audio commentary", "Dress Gud (attempt to contact a celebrity - Trevor)"];
 
@@ -24,6 +101,18 @@ var playerIDs = {
     "trevor": 5
 };
 
+function randomize_colors() {
+    var challengeTiles = getElementsByClassName("challenge-tile");
+    var availibleColors = ["#F44336", "#9C27B0", "#2196F3", "#009688", "#795548", "#607D8B"];
+    for (var i = 0; i < challengeTiles.length; ++i) {
+        var randomNumber = Math.floor(Math.random() * availibleColors.length);
+        var currentTile = challengeTiles[i];
+        // document.getElementById("p2").style.fontSize = "larger";
+        
+        currentTile.style.backgroundColor= availibleColors[randomNumber];
+        availibleColors.splice(randomNumber, 1);
+    }
+}
 
 function updateChallenges() {
     
@@ -58,9 +147,10 @@ function updateChallenges() {
     // Get past Elements
     for (var playerID = 0; playerID < pastChallengerElements.length; playerID++) {
         var currentChallengerElement = pastChallengerElements[playerID];
-        currentChallengerElement.innerHTML = "<em>" + challenges[playerChallengeOrder[playerID][diffDays - 1]] + "</em>";
+        currentChallengerElement.innerHTML = challenges[playerChallengeOrder[playerID][diffDays - 1]];
     };
     
 }
 
+randomize_colors();
 updateChallenges();
