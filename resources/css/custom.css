@@ -1,21 +1,33 @@
-th {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-td {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 #main-heading {
-    font-family: Copperplate;
+    font-family: Copperplate, Comic Sans MS;
     text-align: center;
+    font-size: 4em;
 }
 
-#spacer {
+.spacer {
     padding-top: 25;
     padding-bottom: 25px;
+}
+
+
+h4.name {
+    text-align: center;
+    color: #FFFFFF
+}
+
+p.challenge {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+p.past-challenge {
+    color: #FFFFFF;
+    text-align: center;
+    font-style: italic;
+    font-size: .70em;
+}
+
+.challenge-tile {
+    padding: 10px;
+    background-color: #2196f3;
 }
