@@ -1,76 +1,73 @@
-var getElementsByClassName = function (className, tag, elm){
-	if (document.getElementsByClassName) {
-		getElementsByClassName = function (className, tag, elm) {
-			elm = elm || document;
-			var elements = elm.getElementsByClassName(className),
-				nodeName = (tag)? new RegExp("\\b" + tag + "\\b", "i") : null,
-				returnElements = [],
-				current;
-			for(var i=0, il=elements.length; i<il; i+=1){
-				current = elements[i];
-				if(!nodeName || nodeName.test(current.nodeName)) {
-					returnElements.push(current);
-				}
-			}
-			return returnElements;
-		};
-	}
-	else if (document.evaluate) {
-		getElementsByClassName = function (className, tag, elm) {
-			tag = tag || "*";
-			elm = elm || document;
-			var classes = className.split(" "),
-				classesToCheck = "",
-				xhtmlNamespace = "http://www.w3.org/1999/xhtml",
-				namespaceResolver = (document.documentElement.namespaceURI === xhtmlNamespace)? xhtmlNamespace : null,
-				returnElements = [],
-				elements,
-				node;
-			for(var j=0, jl=classes.length; j<jl; j+=1){
-				classesToCheck += "[contains(concat(' ', @class, ' '), ' " + classes[j] + " ')]";
-			}
-			try	{
-				elements = document.evaluate(".//" + tag + classesToCheck, elm, namespaceResolver, 0, null);
-			}
-			catch (e) {
-				elements = document.evaluate(".//" + tag + classesToCheck, elm, null, 0, null);
-			}
-			while ((node = elements.iterateNext())) {
-				returnElements.push(node);
-			}
-			return returnElements;
-		};
-	}
-	else {
-		getElementsByClassName = function (className, tag, elm) {
-			tag = tag || "*";
-			elm = elm || document;
-			var classes = className.split(" "),
-				classesToCheck = [],
-				elements = (tag === "*" && elm.all)? elm.all : elm.getElementsByTagName(tag),
-				current,
-				returnElements = [],
-				match;
-			for(var k=0, kl=classes.length; k<kl; k+=1){
-				classesToCheck.push(new RegExp("(^|\\s)" + classes[k] + "(\\s|$)"));
-			}
-			for(var l=0, ll=elements.length; l<ll; l+=1){
-				current = elements[l];
-				match = false;
-				for(var m=0, ml=classesToCheck.length; m<ml; m+=1){
-					match = classesToCheck[m].test(current.className);
-					if (!match) {
-						break;
-					}
-				}
-				if (match) {
-					returnElements.push(current);
-				}
-			}
-			return returnElements;
-		};
-	}
-	return getElementsByClassName(className, tag, elm);
+var getElementsByClassName = function (className, tag, elm) {
+    if (document.getElementsByClassName) {
+        getElementsByClassName = function (className, tag, elm) {
+            elm = elm || document;
+            var elements = elm.getElementsByClassName(className),
+                nodeName = (tag) ? new RegExp("\\b" + tag + "\\b", "i") : null,
+                returnElements = [],
+                current;
+            for (var i = 0, il = elements.length; i < il; i += 1) {
+                current = elements[i];
+                if (!nodeName || nodeName.test(current.nodeName)) {
+                    returnElements.push(current);
+                }
+            }
+            return returnElements;
+        };
+    } else if (document.evaluate) {
+        getElementsByClassName = function (className, tag, elm) {
+            tag = tag || "*";
+            elm = elm || document;
+            var classes = className.split(" "),
+                classesToCheck = "",
+                xhtmlNamespace = "http://www.w3.org/1999/xhtml",
+                namespaceResolver = (document.documentElement.namespaceURI === xhtmlNamespace) ? xhtmlNamespace : null,
+                returnElements = [],
+                elements,
+                node;
+            for (var j = 0, jl = classes.length; j < jl; j += 1) {
+                classesToCheck += "[contains(concat(' ', @class, ' '), ' " + classes[j] + " ')]";
+            }
+            try {
+                elements = document.evaluate(".//" + tag + classesToCheck, elm, namespaceResolver, 0, null);
+            } catch (e) {
+                elements = document.evaluate(".//" + tag + classesToCheck, elm, null, 0, null);
+            }
+            while ((node = elements.iterateNext())) {
+                returnElements.push(node);
+            }
+            return returnElements;
+        };
+    } else {
+        getElementsByClassName = function (className, tag, elm) {
+            tag = tag || "*";
+            elm = elm || document;
+            var classes = className.split(" "),
+                classesToCheck = [],
+                elements = (tag === "*" && elm.all) ? elm.all : elm.getElementsByTagName(tag),
+                current,
+                returnElements = [],
+                match;
+            for (var k = 0, kl = classes.length; k < kl; k += 1) {
+                classesToCheck.push(new RegExp("(^|\\s)" + classes[k] + "(\\s|$)"));
+            }
+            for (var l = 0, ll = elements.length; l < ll; l += 1) {
+                current = elements[l];
+                match = false;
+                for (var m = 0, ml = classesToCheck.length; m < ml; m += 1) {
+                    match = classesToCheck[m].test(current.className);
+                    if (!match) {
+                        break;
+                    }
+                }
+                if (match) {
+                    returnElements.push(current);
+                }
+            }
+            return returnElements;
+        };
+    }
+    return getElementsByClassName(className, tag, elm);
 };
 
 
@@ -92,15 +89,6 @@ var playerChallengeOrder = [
     [5, 12, 14, 13, 9, 2, 30, 22, 29, 11, 10, 17, 1, 27, 21, 4, 26, 15, 16, 8, 18, 28, 6, 24, 3, 7, 20, 31, 19, 0, 25, 23]
 ];
 
-var playerIDs = {
-    "alexChoj": 0,
-    "alexZeit": 1,
-    "anthony": 2,
-    "nick": 3,
-    "spencer": 4,
-    "trevor": 5
-};
-
 function randomize_colors() {
     var challengeTiles = getElementsByClassName("challenge-tile");
     var availibleColors = ["#F44336", "#9C27B0", "#2196F3", "#009688", "#795548", "#607D8B"];
@@ -108,14 +96,14 @@ function randomize_colors() {
         var randomNumber = Math.floor(Math.random() * availibleColors.length);
         var currentTile = challengeTiles[i];
         // document.getElementById("p2").style.fontSize = "larger";
-        
-        currentTile.style.backgroundColor= availibleColors[randomNumber];
+
+        currentTile.style.backgroundColor = availibleColors[randomNumber];
         availibleColors.splice(randomNumber, 1);
     }
 }
 
 function updateChallenges() {
-    
+
     var challengerElements = [document.getElementById("alexChoj"),
                             document.getElementById("alexZeit"),
                             document.getElementById("anthony"),
@@ -124,11 +112,11 @@ function updateChallenges() {
                             document.getElementById("trevor")];
     // Time stuff.
     var oneDay = 86400000; // hours*minutes*seconds*milliseconds = milliseconds per day
-    var startOfChalleges = new Date("January 11, 2015 19:00:00");
+    startOfChalleges = new Date("January 11, 2015 19:00:00");
     var today = new Date();
-    
+
     var diffDays = Math.floor((today.getTime() - startOfChalleges.getTime()) / (oneDay));
-    
+
     for (var playerID = 0; playerID < challengerElements.length; playerID++) {
         // Get proper challenge.
         var currentChallengerElement = challengerElements[playerID];
@@ -136,20 +124,25 @@ function updateChallenges() {
         // I select the individual days by 
         currentChallengerElement.innerHTML = challenges[playerChallengeOrder[playerID][diffDays]];
     };
-    
+
     var pastChallengerElements = [document.getElementById("alexChojPast"),
                             document.getElementById("alexZeitPast"),
                             document.getElementById("anthonyPast"),
                             document.getElementById("nickPast"),
                             document.getElementById("spencerPast"),
                             document.getElementById("trevorPast")];
-    
+
     // Get past Elements
     for (var playerID = 0; playerID < pastChallengerElements.length; playerID++) {
         var currentChallengerElement = pastChallengerElements[playerID];
         currentChallengerElement.innerHTML = challenges[playerChallengeOrder[playerID][diffDays - 1]];
     };
-    
+
+    // Update the countdown clock.
+    countdown_clock = document.getElementById("countdown");
+    remaining_days = (challenges.length - diffDays);
+    countdown_clock.innerHTML = remaining_days;
+
 }
 
 

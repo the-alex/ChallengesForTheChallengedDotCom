@@ -19,16 +19,22 @@
 </head>
 
 <body>
-    <div id="spacer"></div>
     <div class="container">
-        <div class="row col-lg-12">
-            <h1 id="main-heading">
-                <b>Challenges for the Challenged</b>
-            </h1>
-        </div>
-    </div>
-    <div class="container" id="links">
         <div class="row">
+            <div class="row col-lg-12">
+                <h1 id="main-heading">
+                    <strong>Challenges for the Challenged</strong>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="countdown-container">
+                    <h2>Days Remaining: <span id="countdown"></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="links">
             <div class="col-lg-8 col-lg-offset-2">
                 <button class="btn" type="button" data-toggle="collapse" data-target="#about-content" aria-expanded="false" aria-controls="about-content">
                     What is this?
@@ -40,10 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container" id="challenge-tile-container">
-        <div class="row">
+        <div class="row" id="challenge-tile-container">
             <div class="col-sm-2 challenge-tile">
                 <h4 class="name">Alex Chojnacki</h4>
                 <p class="challenge" id="alexChoj">This is a current Challenge</p>
@@ -77,6 +80,7 @@
 
         </div>
     </div>
+
 
 
     <script src="resources/js/challenged.js"></script>
