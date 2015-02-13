@@ -147,4 +147,4 @@ function updateChallenges() {
 
 
 randomize_colors();
-updateChallenges();
+//updateChallenges();
